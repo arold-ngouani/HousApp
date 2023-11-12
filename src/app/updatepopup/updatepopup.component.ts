@@ -3,6 +3,8 @@ import { FormBuilder, Validators } from '@angular/forms'
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../service/auth.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Role } from '../interfaces/role';
+import { User } from '../interfaces/user';
 
 @Component({
   selector: 'app-updatepopup',
@@ -11,10 +13,14 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class UpdatepopupComponent implements OnInit {
 
+  rolelist!: any;
+  editdata: any;
+
+
   constructor(private builder: FormBuilder, private service: AuthService, private toastr: ToastrService,
     private dialogref: MatDialogRef<UpdatepopupComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {
 
-    this.service.getuserrole().subscribe(res => {
+    this.service.getUserRole().subscribe(res => {
       this.rolelist = res;
     });
     
@@ -23,12 +29,10 @@ export class UpdatepopupComponent implements OnInit {
   }
   ngOnInit(): void {
     if (this.data.usercode != '' && this.data.usercode != null) {
-      this.loaduserdata(this.data.usercode);
+      this.LoadUserData(this.data.usercode);
     }
   }
-  rolelist: any;
-  editdata: any;
-
+  
   registerform = this.builder.group({
     id: this.builder.control(''),
     name: this.builder.control(''),
@@ -39,8 +43,8 @@ export class UpdatepopupComponent implements OnInit {
     isactive: this.builder.control(false)
   });
 
-  loaduserdata(code: any) {
-    this.service.GetUserbyCode(code).subscribe(res => {
+  LoadUserData(code: any) {
+    this.service.getUserByCode(code).subscribe(res => {
       this.editdata = res;
       console.log(this.editdata);
       this.registerform.setValue({
@@ -50,8 +54,8 @@ export class UpdatepopupComponent implements OnInit {
       });
     });
   }
-  UpdateUser() {
-    this.service.updateuser(this.registerform.value.id, this.registerform.value).subscribe(res => {
+  updateUser() {
+    this.service.updateUser(this.registerform.value.id, this.registerform.value).subscribe(res => {
       this.toastr.success('Updated successfully.');
       this.dialogref.close();
     });

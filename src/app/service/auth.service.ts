@@ -1,6 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Role } from '../interfaces/role';
+import { Menu } from '../interfaces/menu';
+import { User } from '../interfaces/user';
 
 
 @Injectable({
@@ -13,34 +16,34 @@ export class AuthService {
   }
   apiurl='http://localhost:3000/user';
 
-  RegisterUser(inputdata:any){
+  registerUser(inputdata:any): Observable<any>{
     return this.http.post(this.apiurl,inputdata)
   }
-  GetUserbyCode(id:any){
+  getUserByCode(id:any): Observable<any>{
     return this.http.get(this.apiurl+'/'+id);
   }
-  Getall(){
+  getAll():Observable<any>{
     return this.http.get(this.apiurl);
   }
-  updateuser(id:any,inputdata:any){
+  updateUser(id:any,inputdata:any): Observable<any>{
     return this.http.put(this.apiurl+'/'+id,inputdata);
   }
-  getuserrole(){
+  getUserRole(): Observable<any>{
     return this.http.get('http://localhost:3000/role');
   }
-  isloggedin(){
+  isLoggedIn(){
     return sessionStorage.getItem('username')!=null;
   }
-  getrole(){
+  getRole(){
     return sessionStorage.getItem('role')!=null?sessionStorage.getItem('role')?.toString():'';
   }
-  GetAllCustomer(){
+  getAllCustomer(): Observable<any>{
     return this.http.get('http://localhost:3000/customer');
   }
-  Getaccessbyrole(role:any,menu:any){
+  getAccessByRole(role:any,menu:any): Observable<any>{
     return this.http.get('http://localhost:3000/roleaccess?role='+role+'&menu='+menu)
   }
-  deleteEmployee(id: number): Observable<any> {
+  deleteUser(id: User): Observable<any> {
     return this.http.delete(`http://localhost:3000/user/${id}`);
   }
 }

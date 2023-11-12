@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms'
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
@@ -6,34 +6,41 @@ import { MatSort } from '@angular/material/sort';
 import { AuthService } from '../service/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { UpdatepopupComponent } from '../updatepopup/updatepopup.component'
+import { User } from '../interfaces/user';
 
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css']
 })
-export class UserComponent implements AfterViewInit {
-
-  constructor(private builder: FormBuilder, private service: AuthService, private dialog: MatDialog) {
-    this.LoadUser();
-  }
-  userlist: any;
-  dataSource: any;
+export class UserComponent implements OnInit,AfterViewInit {
+  displayedColumns: string[] = ['username', 'name', 'email', 'status', 'role', 'action'];
+  userlist!: User[];
+  dataSource!: any;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+
+  constructor(private builder: FormBuilder, private service: AuthService, private dialog: MatDialog) {
+    
+  }
+
+  ngOnInit(): void {
+    this.LoadUser();
+  }
+  
 
   ngAfterViewInit(): void {
 
   }
   LoadUser() {
-    this.service.Getall().subscribe(res => {
+    this.service.getAll().subscribe(res => {
       this.userlist = res;
       this.dataSource = new MatTableDataSource(this.userlist);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
   }
-  displayedColumns: string[] = ['username', 'name', 'email', 'status', 'role', 'action'];
+  
 
   updateuser(code: any) {
     this.OpenDialog('1000ms', '600ms', code);
@@ -62,8 +69,8 @@ export class UserComponent implements AfterViewInit {
     }
   }
 
-  deleteEmployee(id: number) {
-    this.service.deleteEmployee(id).subscribe({
+  deleteUser(id: User) {
+    this.service.deleteUser(id).subscribe({
       next: (res) => {
         this.LoadUser();
       },

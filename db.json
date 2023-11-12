@@ -19,22 +19,7 @@
       "email": "test@in.com",
       "gender": "male",
       "role": "user",
-      "isactive": true,
-      "address":{
-        "area":"chennai"
-      }
-    },
-    {
-      "id": "Jhon1",
-      "name": "NT Infotech",
-      "password": "Test@1233",
-      "email": "te@in.com",
-      "gender": "male",
-      "role": "tech",
-      "isactive": true,
-      "address":{
-        "area":"chennai"
-      }
+      "isactive": true
     },
     {
       "id": "ntuser",
@@ -44,8 +29,8 @@
       "gender": "male",
       "role": "tech",
       "isactive": true,
-      "address":{
-        "area":"banglore"
+      "address": {
+        "area": "banglore"
       }
     },
     {
