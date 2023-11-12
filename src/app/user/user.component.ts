@@ -53,6 +53,24 @@ export class UserComponent implements AfterViewInit {
     });
   }
 
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
+  deleteEmployee(id: number) {
+    this.service.deleteEmployee(id).subscribe({
+      next: (res) => {
+        this.LoadUser();
+      },
+      error: console.log,
+    });
+  }
+
 
 
 }

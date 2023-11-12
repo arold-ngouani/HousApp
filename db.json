@@ -19,7 +19,10 @@
       "email": "test@in.com",
       "gender": "male",
       "role": "user",
-      "isactive": true
+      "isactive": true,
+      "address":{
+        "area":"chennai"
+      }
     },
     {
       "id": "Jhon1",
@@ -29,8 +32,8 @@
       "gender": "male",
       "role": "tech",
       "isactive": true,
-      "address": {
-        "area": "chennai"
+      "address":{
+        "area":"chennai"
       }
     },
     {
@@ -41,8 +44,8 @@
       "gender": "male",
       "role": "tech",
       "isactive": true,
-      "address": {
-        "area": "banglore"
+      "address":{
+        "area":"banglore"
       }
     },
     {
