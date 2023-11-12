@@ -8,8 +8,8 @@
       "gender": "male",
       "role": "admin",
       "isactive": true,
-      "address":{
-        "area":"chennai"
+      "address": {
+        "area": "chennai"
       }
     },
     {
@@ -18,11 +18,8 @@
       "password": "Test@1234",
       "email": "test@in.com",
       "gender": "male",
-      "role": "user",
-      "isactive": true,
-      "address":{
-        "area":"chennai"
-      }
+      "role": "tech",
+      "isactive": true
     },
     {
       "id": "Jhon1",
@@ -32,20 +29,8 @@
       "gender": "male",
       "role": "tech",
       "isactive": true,
-      "address":{
-        "area":"chennai"
-      }
-    },
-    {
-      "id": "ntuser",
-      "name": "ramesh",
-      "password": "Test@1234",
-      "email": "te@in.com",
-      "gender": "male",
-      "role": "tech",
-      "isactive": true,
-      "address":{
-        "area":"banglore"
+      "address": {
+        "area": "chennai"
       }
     }
   ],
@@ -73,59 +58,57 @@
     {
       "role": "admin",
       "menu": "user",
-      "haveedit":true,
-      "haveadd":true,
-      "havedelete":true
+      "haveedit": true,
+      "haveadd": true,
+      "havedelete": true
     },
     {
       "role": "admin",
       "menu": "customer",
-      "haveedit":true,
-      "haveadd":true,
-      "havedelete":true
+      "haveedit": true,
+      "haveadd": true,
+      "havedelete": true
     },
     {
       "role": "user",
       "menu": "user",
-      "haveedit":false,
-      "haveadd":false,
-      "havedelete":false
+      "haveedit": false,
+      "haveadd": false,
+      "havedelete": false
     },
     {
       "role": "user",
       "menu": "customer",
-      "haveedit":true,
-      "haveadd":true,
-      "havedelete":false
+      "haveedit": true,
+      "haveadd": true,
+      "havedelete": false
     }
-    
-    
   ],
-  "customer":[
+  "customer": [
     {
-      "id":1,
-      "name":"rakhesh",
-      "Creditlimit":1000
+      "id": 1,
+      "name": "rakhesh",
+      "Creditlimit": 1000
     },
     {
-      "id":2,
-      "name":"rahul",
-      "Creditlimit":1000
+      "id": 2,
+      "name": "rahul",
+      "Creditlimit": 1000
     },
     {
-      "id":3,
-      "name":"ramesh",
-      "Creditlimit":1000
+      "id": 3,
+      "name": "ramesh",
+      "Creditlimit": 1000
     },
     {
-      "id":4,
-      "name":"rahim",
-      "Creditlimit":1000
+      "id": 4,
+      "name": "rahim",
+      "Creditlimit": 1000
     },
     {
-      "id":5,
-      "name":"robert",
-      "Creditlimit":1000
+      "id": 5,
+      "name": "robert",
+      "Creditlimit": 1000
     }
   ]
 }
