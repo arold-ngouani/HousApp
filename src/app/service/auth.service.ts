@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Role } from '../interfaces/role';
 import { Menu } from '../interfaces/menu';
 import { User } from '../interfaces/user';
+import { Customer } from '../interfaces/customer';
 
 
 @Injectable({
@@ -16,20 +17,20 @@ export class AuthService {
   }
   apiurl='http://localhost:3000/user';
 
-  registerUser(inputdata:any): Observable<any>{
-    return this.http.post(this.apiurl,inputdata)
+  registerUser(inputdata:any): Observable<User>{
+    return this.http.post<User>(this.apiurl,inputdata)
   }
-  getUserByCode(id:any): Observable<any>{
-    return this.http.get(this.apiurl+'/'+id);
+  getUserByCode(id:any): Observable<User>{
+    return this.http.get<User>(this.apiurl+'/'+id);
   }
-  getAll():Observable<any>{
-    return this.http.get(this.apiurl);
+  getAll():Observable<User[]>{
+    return this.http.get<User[]>(this.apiurl);
   }
-  updateUser(id:any,inputdata:any): Observable<any>{
-    return this.http.put(this.apiurl+'/'+id,inputdata);
+  updateUser(id:any,inputdata:any): Observable<User>{
+    return this.http.put<User>(this.apiurl+'/'+id,inputdata);
   }
-  getUserRole(): Observable<any>{
-    return this.http.get('http://localhost:3000/role');
+  getUserRole(): Observable<Role>{
+    return this.http.get<Role>('http://localhost:3000/role');
   }
   isLoggedIn(){
     return sessionStorage.getItem('username')!=null;
@@ -37,17 +38,17 @@ export class AuthService {
   getRole(){
     return sessionStorage.getItem('role')!=null?sessionStorage.getItem('role')?.toString():'';
   }
-  getAllCustomer(): Observable<any>{
-    return this.http.get('http://localhost:3000/customer');
+  getAllCustomer(): Observable<Customer[]>{
+    return this.http.get<Customer[]>('http://localhost:3000/customer');
   }
-  getAccessByRole(role:any,menu:any): Observable<any>{
-    return this.http.get('http://localhost:3000/roleaccess?role='+role+'&menu='+menu)
+  getAccessByRole(role:any,menu:any): Observable<Role>{
+    return this.http.get<Role>('http://localhost:3000/roleaccess?role='+role+'&menu='+menu)
   }
-  deleteUser(id: User): Observable<any> {
-    return this.http.delete(`http://localhost:3000/user/${id}`);
+  deleteUser(id: User): Observable<User> {
+    return this.http.delete<User>(`http://localhost:3000/user/${id}`);
   }
 
-  deleteCustomer(id: User): Observable<any> {
-    return this.http.delete(`http://localhost:3000/customer/${id}`);
+  deleteCustomer(id: User): Observable<Customer> {
+    return this.http.delete<Customer>(`http://localhost:3000/customer/${id}`);
   }
 }

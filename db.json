@@ -22,15 +22,6 @@
       "isactive": true
     },
     {
-      "id": "ntuser",
-      "name": "ramesh",
-      "password": "Test@1234",
-      "email": "te@in.com",
-      "gender": "male",
-      "role": "tech",
-      "isactive": true
-    },
-    {
       "id": "arold",
       "name": "arold",
       "password": "Arold$1234",
