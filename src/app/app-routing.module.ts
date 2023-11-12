@@ -1,20 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from './auth/guard/auth.guard';
+import { CustomerComponent } from './customer/customer.component';
+import { AuthGuard } from './guard/auth.guard';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { UserComponent } from './user/user.component';
 
 const routes: Routes = [
-  {
-    path:'', loadChildren: () => import('./house/house.module')
-    .then(m => m.HouseModule), canActivate: [AuthGuard]
-  },
-  {
-    path:'auth', loadChildren: () => import('./auth/auth.module')
-    .then(m => m.AuthModule)
-  },
-  {
-    path:'admin', loadChildren: () => import('./admin/admin.module')
-    .then(m => m.AdminModule), canActivate: [AuthGuard]
-  },
+ {component:LoginComponent,path:'login'},
+ {component:RegisterComponent,path:'register'},
+ {component:HomeComponent,path:'',canActivate:[AuthGuard]},
+ {component:UserComponent,path:'user',canActivate:[AuthGuard]},
+ {component:CustomerComponent,path:'customer',canActivate:[AuthGuard]},
 ];
 
 @NgModule({

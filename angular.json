@@ -3,34 +3,9 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "houseApp": {
+    "authentication": {
       "projectType": "application",
-      "schematics": {
-        "@schematics/angular:class": {
-          "skipTests": true
-        },
-        "@schematics/angular:component": {
-          "skipTests": true
-        },
-        "@schematics/angular:directive": {
-          "skipTests": true
-        },
-        "@schematics/angular:guard": {
-          "skipTests": true
-        },
-        "@schematics/angular:interceptor": {
-          "skipTests": true
-        },
-        "@schematics/angular:pipe": {
-          "skipTests": true
-        },
-        "@schematics/angular:resolver": {
-          "skipTests": true
-        },
-        "@schematics/angular:service": {
-          "skipTests": true
-        }
-      },
+      "schematics": {},
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -38,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/house-app",
+            "outputPath": "dist/authentication",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -87,10 +62,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "houseApp:build:production"
+              "browserTarget": "authentication:build:production"
             },
             "development": {
-              "browserTarget": "houseApp:build:development"
+              "browserTarget": "authentication:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -98,7 +73,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "houseApp:build"
+            "browserTarget": "authentication:build"
           }
         },
         "test": {
@@ -114,7 +89,7 @@
               "src/assets"
             ],
             "styles": [
-              "@angular/material/prebuilt-themes/pink-bluegrey.css",
+              "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -124,6 +99,6 @@
     }
   },
   "cli": {
-    "analytics": "25954aa0-e2b6-48eb-a00e-4378a1effdf2"
+    "analytics": false
   }
 }
