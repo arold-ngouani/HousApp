@@ -1,0 +1,38 @@
+<mat-card>
+    <mat-card-header>
+      <h1>User Registration</h1>
+    </mat-card-header>
+    <mat-card-content>
+      <form class="example-form" [formGroup]="registerForm" (ngSubmit)="registration()">
+        <mat-form-field class="example-full-width">
+          <mat-label>Nom utilisateur</mat-label>
+          <input matInput formControlName="id">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label>Nom</mat-label>
+          <input matInput formControlName="name">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label>Mot de passe</mat-label>
+          <input type="password" matInput formControlName="password">
+          <!-- Ajout d'un message d'erreur pour la validation du mot de passe -->
+          <mat-error *ngIf="registerForm.get('password')?.hasError('pattern')">Le mot de passe doit contenir au moins une lettre majuscule et avoir une longueur minimale de 8 caractères.</mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email">
+        </mat-form-field>
+        <div>
+          <mat-radio-group formControlName="gender" aria-label="Gender">
+            <mat-radio-button value="homme">Homme</mat-radio-button>
+            <mat-radio-button value="femme">Femme</mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <div>
+          <button mat-raised-button color="primary" type="submit">Sauvegarder</button>
+          <a routerLink="" mat-raised-button color="accent">retour login</a>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+  
