@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../service/auth.service';
+import { User } from '../interfaces/user';
 
 @Component({
   selector: 'app-customer',
@@ -67,9 +68,17 @@ export class CustomerComponent {
     }
 
   }
-  removecustomer(code: any) {
+  removecustomer(id: any) {
     if(this.havedelete){
+      this.service.deleteCustomer(id).subscribe({
+        next: (res) => {
+          this.LoadCustomer();
+        },
+        error: console.log,
+      });
+        
       this.toastr.success('Success')
+      
    }else{
      this.toastr.warning("You don't have access for Delete")
    }
@@ -81,6 +90,5 @@ export class CustomerComponent {
      this.toastr.warning("You don't have access for Create")
    }
   }
-
 
 }

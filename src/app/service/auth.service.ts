@@ -46,4 +46,8 @@ export class AuthService {
   deleteUser(id: User): Observable<any> {
     return this.http.delete(`http://localhost:3000/user/${id}`);
   }
+
+  deleteCustomer(id: User): Observable<any> {
+    return this.http.delete(`http://localhost:3000/customer/${id}`);
+  }
 }
