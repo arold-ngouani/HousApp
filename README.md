@@ -5,9 +5,10 @@ ceci est un projet scolaire Front realiser en Angular et Json-server
 
 git Clone https://github.com/arold-ngouani/HousApp.git
 
-npm inslall
-
+npm install
+npm install json-server
 ng serve -o
+npm run db 
 
 # login
 "id": "admin",
